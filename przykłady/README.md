@@ -18,3 +18,6 @@ podanych w readme instalacji.
 
 * Skrypt test.sh robi właściwie wszystko za nas, nie musimy martwić się 
 kopiowaniem danych testowych do HDFS i późniejszym szukaniem wyniku.
+
+* Przykładowy wordcount w javie: 
+[klik](http://wiki.apache.org/hadoop/WordCount)

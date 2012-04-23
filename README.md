@@ -293,3 +293,9 @@ przydatne interfejsy:
 * http://localhost:50070/ – webowy UI dla HDFS name node
 
 * Dzięki tym interfejsom możemy przyjrzeć się działaniu klastra, jak i stwierdzić, czy w ogóle się odpalił
+
+* Na podstawie 
+[strony](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/)
+
+* Instalacja kilku klastrów na 
+[stronie](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-cluster/)
