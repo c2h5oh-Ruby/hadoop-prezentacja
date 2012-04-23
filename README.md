@@ -21,6 +21,8 @@ hduser@ubuntu:~$
 ```
 * uwaga! wszystkie przykłady pokazane są dla użytkownika hduser!
 
+* z tego powodu musimy kontrolować nazwy folderów i inne ścieżki, da się to wyłapać obserwując błędy
+
 * ściągamy hadoop ze [strony](http://hadoop.apache.org/common/releases.html) fundacji apache (w momencie pisania tego tekstu stabilne wydanie to 1.0.0)
 
 * rozpakowujemy archiwum z hadoop'em
