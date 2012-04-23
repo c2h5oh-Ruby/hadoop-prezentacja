@@ -66,7 +66,7 @@ export PATH=$PATH:$HADOOP_HOME/bin
 odkomentowujemy drugą linijkę i zmieniamy ścieżkę do swojej instalacji javy, np na sigmie:
 
 ```sh
-> export JAVA_HOME=/usr/lib/jvm/java
+export JAVA_HOME=/usr/lib/jvm/java
 ```
 
 * w folderze /conf/ znajdują się pliki konfiguracyjne. Na potrzeby konfiguracji tworzymy foldery:
@@ -200,3 +200,94 @@ hduser@ubuntu:/usr/local/hadoop$
 
 testowanie
 --------------
+
+* ściągamy jakiegoś ebooka, na przykład z tych stron:
+[1](http://www.gutenberg.org/etext/20417)
+[2](http://www.gutenberg.org/etext/5000)
+[3](http://www.gutenberg.org/etext/4300)
+na przykład do folderu /tmp/gutenberg. Pamiętamy, aby była to wersja tekstowa UTF-8.
+
+```sh
+hduser@ubuntu:~$ ls -l /tmp/gutenberg/
+total 3604
+-rw-r--r-- 1 hduser hadoop  674566 Feb  3 10:17 pg20417.txt
+-rw-r--r-- 1 hduser hadoop 1573112 Feb  3 10:18 pg4300.txt
+-rw-r--r-- 1 hduser hadoop 1423801 Feb  3 10:18 pg5000.txt
+hduser@ubuntu:~$
+```
+
+* Żeby móc skorzystać z tych plików, musimy je skopiować do Hadoopowego HDFS:
+
+```sh
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop dfs -copyFromLocal /tmp/gutenberg /user/hduser/gutenberg
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop dfs -ls /user/hduser
+Found 1 items
+drwxr-xr-x   - hduser supergroup          0 2010-05-08 17:40 /user/hduser/gutenberg
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop dfs -ls /user/hduser/gutenberg
+Found 3 items
+-rw-r--r--   3 hduser supergroup     674566 2011-03-10 11:38 /user/hduser/gutenberg/pg20417.txt
+-rw-r--r--   3 hduser supergroup    1573112 2011-03-10 11:38 /user/hduser/gutenberg/pg4300.txt
+-rw-r--r--   3 hduser supergroup    1423801 2011-03-10 11:38 /user/hduser/gutenberg/pg5000.txt
+hduser@ubuntu:/usr/local/hadoop$
+```
+
+* Teraz odpalamy przykład map-reduce, który liczy ile razy dane słowo wystepuje w tekstach.
+
+```sh
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop jar hadoop*examples*.jar wordcount /user/hduser/
+```
+
+* Komenda ta czyta wszystkie pliki z katalogu np.  /user/hduser/gutenberg, przetwarza je i wynik składuje w katalogu HDFS np. /user/hduser/gutenberg-output.
+
+* Przykładowe działanie map-reduce na konsoli:
+
+```sh
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop jar hadoop*examples*.jar wordcount /user/hduser/gutenberg /user/hduser/gutenberg-output
+10/05/08 17:43:00 INFO input.FileInputFormat: Total input paths to process : 3
+10/05/08 17:43:01 INFO mapred.JobClient: Running job: job_201005081732_0001
+10/05/08 17:43:02 INFO mapred.JobClient:  map 0% reduce 0%
+10/05/08 17:43:14 INFO mapred.JobClient:  map 66% reduce 0%
+10/05/08 17:43:17 INFO mapred.JobClient:  map 100% reduce 0%
+10/05/08 17:43:26 INFO mapred.JobClient:  map 100% reduce 100%
+10/05/08 17:43:28 INFO mapred.JobClient: Job complete: job_201005081732_0001
+10/05/08 17:43:28 INFO mapred.JobClient: Counters: 17
+10/05/08 17:43:28 INFO mapred.JobClient:   Job Counters
+10/05/08 17:43:28 INFO mapred.JobClient:     Launched reduce tasks=1
+10/05/08 17:43:28 INFO mapred.JobClient:     Launched map tasks=3
+10/05/08 17:43:28 INFO mapred.JobClient:     Data-local map tasks=3
+10/05/08 17:43:28 INFO mapred.JobClient:   FileSystemCounters
+10/05/08 17:43:28 INFO mapred.JobClient:     FILE_BYTES_READ=2214026
+10/05/08 17:43:28 INFO mapred.JobClient:     HDFS_BYTES_READ=3639512
+10/05/08 17:43:28 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=3687918
+10/05/08 17:43:28 INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=880330
+10/05/08 17:43:28 INFO mapred.JobClient:   Map-Reduce Framework
+10/05/08 17:43:28 INFO mapred.JobClient:     Reduce input groups=82290
+10/05/08 17:43:28 INFO mapred.JobClient:     Combine output records=102286
+10/05/08 17:43:28 INFO mapred.JobClient:     Map input records=77934
+10/05/08 17:43:28 INFO mapred.JobClient:     Reduce shuffle bytes=1473796
+10/05/08 17:43:28 INFO mapred.JobClient:     Reduce output records=82290
+10/05/08 17:43:28 INFO mapred.JobClient:     Spilled Records=255874
+10/05/08 17:43:28 INFO mapred.JobClient:     Map output bytes=6076267
+10/05/08 17:43:28 INFO mapred.JobClient:     Combine input records=629187
+10/05/08 17:43:28 INFO mapred.JobClient:     Map output records=629187
+10/05/08 17:43:28 INFO mapred.JobClient:     Reduce input records=102286
+```
+
+* Przeglądamy katalog outputu, np. /user/hduser/gutenberg-output, aby znaleść wyniki.
+
+* Aby odczytać wyniki:
+
+```sh
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop dfs -cat /user/hduser/gutenberg-output/part-r-00000
+```
+
+przydatne interfejsy:
+---------------
+
+* http://localhost:50030/ – webowy UI dla job trackera
+
+* http://localhost:50060/ – webowy UI dla task tracera
+
+* http://localhost:50070/ – webowy UI dla HDFS name node
+
+* Dzięki tym interfejsom możemy przyjrzeć się działaniu klastra, jak i stwierdzić, czy w ogóle się odpalił
