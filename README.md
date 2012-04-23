@@ -1,2 +1,6 @@
-hadoop-prezentacja
-==================
+Instalacja Hadoop'a
+===================
+
+single-instance
+--------------
+
