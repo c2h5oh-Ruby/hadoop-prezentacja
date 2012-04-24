@@ -1,11 +1,28 @@
+Hadoop
+===============
+
+* Apache hadoop jest frameworkiem do odpalania aplikacji na klastrach. Zapewnia on niezawodność i przenośność danych. Działanie hadoopa oparte jest na 
+paradygmacie map-reduce, gdzie obliczenia są podzielone na części, z których każda może być obliczona na oddzielnym węźle w klastrze. Dodatkowo posiada on 
+własny rozproszony system plików (HDFS). Zapewnia on doskonałą komunikację i wymianę danych w klastrze. Co więcej, błędy i problemy z węzłami są 
+rozwiązywane przez framework.
+
 Instalacja Hadoop'a
 ===================
 
 single-instance
 --------------
 * wymagania wstępne: do dzialania hadoop wymaga dzialajacej Javy co najmniej w wersji 1.5.x, zaleca sie używanie Javy w wersji 1.6.x.
-Żeby hadoop działał, musimy także mieć skonfigurowane SSH.
-> cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys.
+Żeby hadoop działał, musimy także mieć skonfigurowane SSH do łączenia się z klastrem:
+* Generowanie kluczy
+
+```sh
+ssh-keygen -t rsa -P ""
+```
+
+```/sh
+cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys.
+```
+
 Udane połączenie wygląda np. tak:
 
 ```sh
