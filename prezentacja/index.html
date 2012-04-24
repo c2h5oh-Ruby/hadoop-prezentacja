@@ -1,0 +1,200 @@
+﻿<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>HADOOP</title>
+
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+
+	</head>
+	
+	<body>
+		
+		<div id="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>APACHE HADOOP</h1>
+					<p style="margin-top: 200px">Aleksandra Bucior . Dawid Milewski . Marek Olszewski</p>
+				</section>
+				
+				<section>
+					<h2>W SKRÓCIE</h2>
+					<ul>
+						<li>Framework, który pozwala aplikacjom bazującym na paradygmacie MapReduce 
+						na rozproszone przetwarzanie na klastrach dużych zbiorów danych. </li>
+						<li>Zaimplementowany w Javie</li>
+						<li>Obecna wersja 1.0.2 z kwietnia 2012r.
+						<li>Otwarty projekt rozwijany przez fundację Apache</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>TWÓRCA</h2>
+					<ul>
+						<li> grudzień 2004 - Google - MapReduce</li>
+						<li> --------------------- Doug Cutting - Hadoop</li>
+					</ul>
+					<p><img src="img/logo.jpg"></p>
+				</section>
+
+				<section>
+					<section>
+						<h2>CZĘŚCI SKŁADOWE</h2>
+						<h3>HADOOP COMMON</h3>
+						<p>
+						Zbiór narzędzi, które wspierają podprojekty Hadoop'a.
+						</p>
+						<p>
+						Zawiera system plików, RPC (protokół zdalnego wywoływania procedur), biblioteki serializacji.
+					</section>
+					<section>
+						<h3>HDFS</h3>
+						<p> Hadoop Distributed File System</p>
+						<img src="img/hdfs.gif">
+						<p>Zapewnia niezawodne, skalowalne i tanie przechowywanie danych</p>
+					</section>
+					<section>
+						<h3>MapReduce</h3>
+						<p>Framework do obliczeń rozproszonych</p>
+						<img src="img/mapreduce.gif">
+						<p>Wykorzystuje zalety rozdzielenia i replikacji danych HDFS do rozprzestrzenienia
+						pracy pomiędzy wiele węzłów.</p>						
+					</section>
+					<section>
+						<h3>Dodatki</h3>
+						<ul>
+							<li>HBase - baza danych, wspiera przechowywanie wielkich tabel</li>
+							<li>Pig - język (opracowany przez Yahoo), który pozwala na operacje na danych
+							w klastrze Hadoop</li>
+							<li>...</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Idea</h2>
+						<p>Stworzony, aby rozwiązać problem szybkiej i niezawodnej analizy dużych zbiorów danych</p>
+						<p style="margin-top: 120px">Hadoop działa na zbiorze maszyn, każda z lokalną pamięcią i danymi. 
+						I koordynuje pracę wśród nich.
+						</p>
+					</section>
+					<section>
+						<h2> Klaster</h2>
+						<img src="img/hadoop.png">
+					</section>
+					<section>
+						<h2>Niezawodność</h2>
+						<p>Nie wymaga interwencji administratora: sam radzi sobie z błędami na płaszczyźnie
+						obliczeń i przechowywania danych</p>
+						<p>W przypadku awarii któregoś węzła, Hadoop kontynuuje obliczenia, 
+						rozdzielając pracę na pozostałe maszyny oraz dodatkowo replikując dane.</p>
+					</section>
+				</section>
+				<!--<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						The nice thing about standards is that there are so many to choose from</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
+					</blockquote>
+				</section>-->
+				
+				<section>
+					<h3>Kto używa Hadoop'a</h3>
+					<ul>
+						<li>Handel</li>
+						<li>Telekomunikacja</li>
+						<li>Sektor finansowy</li>
+						<li>Sieć i media cyfrowe</li>
+						<li>Rząd</li>
+					</ul>
+					
+					<p style="margin-top: 120px">
+						Yahoo - Facebook - Twitter - Amazon - ...
+					</p>
+					
+					<p><a href="http://wiki.apache.org/hadoop/PoweredBy">Pełna lista</a></p>
+				</section>
+				
+				<section>
+					<h2>Linki</h2>
+					<ul>
+						<li><a href="http://hadoop.apache.org/">Strona projektu Hadoop</a></li>
+						<li><a href="http://wiki.apache.org/hadoop/PoweredBy">Who Uses Hadoop?</a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Instalacja oraz przykłady</h2>
+					<p>... </p>
+				</section>
+				
+				<section>
+					<h1>THE END</h1>
+				</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+		
+		<script src="js/reveal.js"></script>
+		
+		<script>
+			// Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: true,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: true,
+
+				// UI style
+				theme: query.theme || 'default', // default/neon
+
+				// Transition style
+				transition: query.transition || 'concave' // default/cube/page/concave/linear(2d)
+			});
+
+			hljs.initHighlightingOnLoad();
+		</script>
+
+	</body>
+</html>
