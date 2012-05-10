@@ -316,3 +316,9 @@ przydatne interfejsy:
 
 * Instalacja kilku klastrów na 
 [stronie](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-cluster/)
+
+## Użyteczne linki
+
+* [Hadoop deep dive: How it enables big data processing](http://h30458.www3.hp.com/us/us/ent/1191327.html)
+* [Kto używa hadoop'a?](http://wiki.apache.org/hadoop/PoweredBy)
+* [Strona projektu hadoop](http://hadoop.apache.org/)
